@@ -90,7 +90,7 @@ public class Figure {
             case 3 : direction = Direction.Left; break;
         }
 
-        createBlocks();
+//        init();
 
         for (Block b : figureParts) {
             b.toMoving();
@@ -119,7 +119,7 @@ public class Figure {
 
         direction = Direction.Up;
 
-        createBlocks();
+        init();
 
         for (Block b : figureParts) {
             b.toMoving();
@@ -140,7 +140,7 @@ public class Figure {
         return direction;
     }
 
-    private void createBlocks() {
+    public void init() {
 
         if (type == FigureType.I) {
             if (direction == Direction.Down || direction == Direction.Up) {
@@ -639,11 +639,11 @@ public class Figure {
                         b.toLastSeen();
                     }
 
-                    figureParts.get(1).setX(figureParts.get(0).getX());
-                    figureParts.get(1).setY(figureParts.get(0).getY());
+                    figureParts.get(0).setX(figureParts.get(2).getX() + 1);
+                    figureParts.get(0).setY(figureParts.get(2).getY());
 
-                    figureParts.get(0).setX(figureParts.get(3).getX());
-                    figureParts.get(0).setY(figureParts.get(3).getY());
+                    figureParts.get(1).setX(figureParts.get(2).getX());
+                    figureParts.get(1).setY(figureParts.get(2).getY() - 1);
 
                     figureParts.get(3).setX(figureParts.get(2).getX());
                     figureParts.get(3).setY(figureParts.get(2).getY() + 1);
@@ -665,11 +665,11 @@ public class Figure {
                         b.toLastSeen();
                     }
 
-                    figureParts.get(1).setX(figureParts.get(0).getX());
-                    figureParts.get(1).setY(figureParts.get(0).getY());
+                    figureParts.get(0).setX(figureParts.get(2).getX());
+                    figureParts.get(0).setY(figureParts.get(2).getY() + 1);
 
-                    figureParts.get(0).setX(figureParts.get(3).getX());
-                    figureParts.get(0).setY(figureParts.get(3).getY());
+                    figureParts.get(1).setX(figureParts.get(2).getX() + 1);
+                    figureParts.get(1).setY(figureParts.get(2).getY());
 
                     figureParts.get(3).setX(figureParts.get(2).getX() - 1);
                     figureParts.get(3).setY(figureParts.get(2).getY());
@@ -691,11 +691,11 @@ public class Figure {
                         b.toLastSeen();
                     }
 
-                    figureParts.get(1).setX(figureParts.get(0).getX());
-                    figureParts.get(1).setY(figureParts.get(0).getY());
+                    figureParts.get(0).setX(figureParts.get(2).getX() - 1);
+                    figureParts.get(0).setY(figureParts.get(2).getY());
 
-                    figureParts.get(0).setX(figureParts.get(3).getX());
-                    figureParts.get(0).setY(figureParts.get(3).getY());
+                    figureParts.get(1).setX(figureParts.get(2).getX());
+                    figureParts.get(1).setY(figureParts.get(2).getY() + 1);
 
                     figureParts.get(3).setX(figureParts.get(2).getX());
                     figureParts.get(3).setY(figureParts.get(2).getY() - 1);
@@ -717,11 +717,11 @@ public class Figure {
                         b.toLastSeen();
                     }
 
-                    figureParts.get(1).setX(figureParts.get(0).getX());
-                    figureParts.get(1).setY(figureParts.get(0).getY());
+                    figureParts.get(0).setX(figureParts.get(2).getX());
+                    figureParts.get(0).setY(figureParts.get(2).getY() - 1);
 
-                    figureParts.get(0).setX(figureParts.get(3).getX());
-                    figureParts.get(0).setY(figureParts.get(3).getY());
+                    figureParts.get(1).setX(figureParts.get(2).getX() - 1);
+                    figureParts.get(1).setY(figureParts.get(2).getY());
 
                     figureParts.get(3).setX(figureParts.get(2).getX() + 1);
                     figureParts.get(3).setY(figureParts.get(2).getY());

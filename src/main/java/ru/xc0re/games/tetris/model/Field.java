@@ -44,11 +44,11 @@ public class Field {
         }
     }
 
-    public boolean checkLines() {
+    public int checkLines() {
 
         int counter = 0;
 
-        boolean broken = false;
+        int broken = 0;
 
         for (int i = 0; i < HEIGHT; i++) {
             for (int j = 0; j < WIDTH; j++) {
@@ -58,12 +58,12 @@ public class Field {
             if (counter == WIDTH) {
                 breakLine(i);
                 collapse(i);
-                broken = true;
+                broken++;
             }
             counter = 0;
         }
 
-        if (broken)
+        if (broken < 0)
             emptyAll();
 
         for (int i = 0; i < HEIGHT; i++) {
