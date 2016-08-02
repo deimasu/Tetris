@@ -25,6 +25,10 @@ public class Field {
 
     }
 
+    public static void destruct() {
+        instance = null;
+    }
+
     public static Field getInstance() {
         if (instance == null) {
             instance = new Field();
