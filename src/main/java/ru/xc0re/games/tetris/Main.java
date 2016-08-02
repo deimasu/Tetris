@@ -36,7 +36,7 @@ public class Main {
         window.setFramerateLimit(60);
 
         Font font = new Font();
-        font.loadFromStream(Main.class.getClassLoader().getResourceAsStream("arial.ttf"));
+        font.loadFromStream(Main.class.getClassLoader().getResourceAsStream("standart.ttf"));
 
         Text scoreText = new Text();
         Text nextText = new Text();
@@ -45,31 +45,37 @@ public class Main {
 
         scoreText.setString("LINES:");
         scoreText.setFont(font);
-        scoreText.setColor(Color.BLACK);
-        scoreText.setCharacterSize(25);
+        scoreText.setColor(Color.WHITE);
+        scoreText.setCharacterSize(20);
         scoreText.setPosition(13 * GAME_UNIT_SIZE, 9 * GAME_UNIT_SIZE);
 
         scoreNumber.setFont(font);
-        scoreNumber.setColor(Color.BLACK);
-        scoreNumber.setCharacterSize(25);
+        scoreNumber.setColor(Color.WHITE);
+        scoreNumber.setCharacterSize(20);
         scoreNumber.setPosition(13.5f * GAME_UNIT_SIZE, 11 * GAME_UNIT_SIZE);
 
         nextText.setString("NEXT:");
         nextText.setFont(font);
-        nextText.setColor(Color.BLACK);
-        nextText.setCharacterSize(25);
+        nextText.setColor(Color.WHITE);
+        nextText.setCharacterSize(20);
         nextText.setPosition(13 * GAME_UNIT_SIZE, 2 * GAME_UNIT_SIZE);
+
+        RectangleShape pauseRect = new RectangleShape();
+        pauseRect.setSize(new Vector2f(220, 70));
+        pauseRect.setFillColor(Color.WHITE);
+        pauseRect.setPosition(WIDTH / 2 - 6 * GAME_UNIT_SIZE, HEIGHT / 2 - 4 * GAME_UNIT_SIZE);
 
         pauseText.setString("PAUSED");
         pauseText.setFont(font);
         pauseText.setColor(Color.BLACK);
-        pauseText.setCharacterSize(40);
-        pauseText.setPosition(WIDTH / 2 - 4 * GAME_UNIT_SIZE, HEIGHT / 2 - 3 * GAME_UNIT_SIZE);
+        pauseText.setCharacterSize(35);
+        pauseText.setPosition(WIDTH / 2 - 5 * GAME_UNIT_SIZE, HEIGHT / 2 - 3 * GAME_UNIT_SIZE);
 
 
         RectangleShape border = new RectangleShape();
         border.setSize(new Vector2f(GAME_UNIT_SIZE * Field.WIDTH, GAME_UNIT_SIZE * Field.HEIGHT));
-        border.setOutlineColor(Color.BLACK);
+        border.setFillColor(Color.BLACK);
+        border.setOutlineColor(Color.WHITE);
         border.setOutlineThickness(3);
         border.setPosition(GAME_UNIT_SIZE * 2, GAME_UNIT_SIZE * 2);
 
@@ -143,7 +149,7 @@ public class Main {
 
             }
 
-            window.clear(Color.WHITE);
+            window.clear(Color.BLACK);
 
             window.draw(border);
             window.draw(nextText);
@@ -161,8 +167,10 @@ public class Main {
                 }
             }
 
-            if (paused)
+            if (paused) {
+                window.draw(pauseRect);
                 window.draw(pauseText);
+            }
 
             window.display();
         }

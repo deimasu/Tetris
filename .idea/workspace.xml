@@ -2,22 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="11e38b80-6f95-4cf9-9b9b-03b7a9c3408b" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/ru/xc0re/games/tetris/Game.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ru/xc0re/games/tetris/Game$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ru/xc0re/games/tetris/Game.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/tile.jpg" afterPath="$PROJECT_DIR$/src/main/resources/tile.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ru/xc0re/games/tetris/Main.class" afterPath="$PROJECT_DIR$/target/classes/ru/xc0re/games/tetris/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ru/xc0re/games/tetris/enums/SpaceType.class" afterPath="$PROJECT_DIR$/target/classes/ru/xc0re/games/tetris/enums/SpaceType.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ru/xc0re/games/tetris/model/Block.class" afterPath="$PROJECT_DIR$/target/classes/ru/xc0re/games/tetris/model/Block.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ru/xc0re/games/tetris/model/Field.class" afterPath="$PROJECT_DIR$/target/classes/ru/xc0re/games/tetris/model/Field.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ru/xc0re/games/tetris/model/Figure.class" afterPath="$PROJECT_DIR$/target/classes/ru/xc0re/games/tetris/model/Figure.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/tile.jpg" afterPath="$PROJECT_DIR$/target/classes/tile.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Tetris.iml" afterPath="$PROJECT_DIR$/Tetris.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/xc0re/games/tetris/Main.java" afterPath="$PROJECT_DIR$/src/main/java/ru/xc0re/games/tetris/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/xc0re/games/tetris/enums/SpaceType.java" afterPath="$PROJECT_DIR$/src/main/java/ru/xc0re/games/tetris/enums/SpaceType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/xc0re/games/tetris/model/Block.java" afterPath="$PROJECT_DIR$/src/main/java/ru/xc0re/games/tetris/model/Block.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/xc0re/games/tetris/model/Field.java" afterPath="$PROJECT_DIR$/src/main/java/ru/xc0re/games/tetris/model/Field.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/xc0re/games/tetris/model/Figure.java" afterPath="$PROJECT_DIR$/src/main/java/ru/xc0re/games/tetris/model/Figure.java" />
     </list>
     <ignored path="Tetris.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -75,8 +65,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/xc0re/games/tetris/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5555556">
-              <caret line="117" column="41" selection-start-line="117" selection-start-column="41" selection-end-line="117" selection-end-column="41" />
+            <state vertical-scroll-proportion="0.41666666">
+              <caret line="63" column="42" selection-start-line="63" selection-start-column="42" selection-end-line="63" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#drawNextFigure#0;class#Main#0" expanded="false" />
@@ -96,11 +86,10 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/xc0re/games/tetris/model/Figure.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="492" column="0" selection-start-line="492" selection-start-column="0" selection-end-line="492" selection-end-column="0" />
+              <caret line="38" column="35" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#328#335#0" expanded="true" />
-                <element signature="method#Figure#0;class#Figure#0" expanded="false" />
                 <element signature="method#init#0;class#Figure#0" expanded="false" />
                 <element signature="method#moveDown#0;class#Figure#0" expanded="false" />
                 <element signature="method#moveRight#0;class#Figure#0" expanded="false" />
@@ -246,9 +235,9 @@
         <option value="$PROJECT_DIR$/src/main/java/ru/xc0re/games/tetris/model/Space.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/xc0re/games/tetris/model/Block.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/xc0re/games/tetris/enums/SpaceType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/xc0re/games/tetris/model/Figure.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/xc0re/games/tetris/model/Field.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/xc0re/games/tetris/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/xc0re/games/tetris/model/Figure.java" />
       </list>
     </option>
   </component>
@@ -264,6 +253,25 @@
     <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Maven</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>MavenModelInspection</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -443,7 +451,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="Errors" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Pong" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Snake" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -821,7 +829,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="23" />
+      <option name="time" value="24" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -842,7 +850,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#328#335#0" expanded="true" />
-            <element signature="method#Figure#0;class#Figure#0" expanded="false" />
             <element signature="method#init#0;class#Figure#0" expanded="false" />
             <element signature="method#moveDown#0;class#Figure#0" expanded="false" />
             <element signature="method#moveRight#0;class#Figure#0" expanded="false" />
@@ -1013,7 +1020,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#328#335#0" expanded="true" />
-            <element signature="method#Figure#0;class#Figure#0" expanded="false" />
             <element signature="method#init#0;class#Figure#0" expanded="false" />
             <element signature="method#moveDown#0;class#Figure#0" expanded="false" />
             <element signature="method#moveRight#0;class#Figure#0" expanded="false" />
@@ -1109,7 +1115,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#328#335#0" expanded="true" />
-            <element signature="method#Figure#0;class#Figure#0" expanded="false" />
             <element signature="method#init#0;class#Figure#0" expanded="false" />
             <element signature="method#moveDown#0;class#Figure#0" expanded="false" />
             <element signature="method#moveRight#0;class#Figure#0" expanded="false" />
@@ -1205,7 +1210,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#328#335#0" expanded="true" />
-            <element signature="method#Figure#0;class#Figure#0" expanded="false" />
             <element signature="method#init#0;class#Figure#0" expanded="false" />
             <element signature="method#moveDown#0;class#Figure#0" expanded="false" />
             <element signature="method#moveRight#0;class#Figure#0" expanded="false" />
@@ -1283,7 +1287,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#328#335#0" expanded="true" />
-            <element signature="method#Figure#0;class#Figure#0" expanded="false" />
             <element signature="method#init#0;class#Figure#0" expanded="false" />
             <element signature="method#moveDown#0;class#Figure#0" expanded="false" />
             <element signature="method#moveRight#0;class#Figure#0" expanded="false" />
@@ -1415,14 +1418,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/xc0re/games/tetris/enums/FigureType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/xc0re/games/tetris/model/Block.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1430,23 +1425,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#move#0;class#Block#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/xc0re/games/tetris/model/Figure.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="492" column="0" selection-start-line="492" selection-start-column="0" selection-end-line="492" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#328#335#0" expanded="true" />
-            <element signature="method#Figure#0;class#Figure#0" expanded="false" />
-            <element signature="method#init#0;class#Figure#0" expanded="false" />
-            <element signature="method#moveDown#0;class#Figure#0" expanded="false" />
-            <element signature="method#moveRight#0;class#Figure#0" expanded="false" />
-            <element signature="method#moveLeft#0;class#Figure#0" expanded="false" />
-            <element signature="method#rotate#0;class#Figure#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1466,10 +1444,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/xc0re/games/tetris/enums/FigureType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/xc0re/games/tetris/model/Figure.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="35" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#328#335#0" expanded="true" />
+            <element signature="method#init#0;class#Figure#0" expanded="false" />
+            <element signature="method#moveDown#0;class#Figure#0" expanded="false" />
+            <element signature="method#moveRight#0;class#Figure#0" expanded="false" />
+            <element signature="method#moveLeft#0;class#Figure#0" expanded="false" />
+            <element signature="method#rotate#0;class#Figure#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/xc0re/games/tetris/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5555556">
-          <caret line="117" column="41" selection-start-line="117" selection-start-column="41" selection-end-line="117" selection-end-column="41" />
+        <state vertical-scroll-proportion="0.41666666">
+          <caret line="63" column="42" selection-start-line="63" selection-start-column="42" selection-end-line="63" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#drawNextFigure#0;class#Main#0" expanded="false" />
