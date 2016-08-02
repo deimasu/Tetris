@@ -1,9 +1,9 @@
 package ru.xc0re.games.tetris.model;
 
+import org.jsfml.graphics.Color;
 import ru.xc0re.games.tetris.enums.Direction;
 import ru.xc0re.games.tetris.enums.FigureType;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -25,7 +25,7 @@ public class Figure {
         int directionNumber = random.nextInt(4);
 
         switch (typeNumber) {
-            case 0 : {
+            case 0: {
 
                 type = FigureType.I;
                 color = Color.CYAN;
@@ -33,7 +33,7 @@ public class Figure {
                 break;
 
             }
-            case 1 : {
+            case 1: {
 
                 type = FigureType.J;
                 color = Color.BLUE;
@@ -41,15 +41,15 @@ public class Figure {
                 break;
 
             }
-            case 2 : {
+            case 2: {
 
                 type = FigureType.L;
-                color = Color.ORANGE;
+                color = new Color(255, 127, 0);
 
                 break;
 
             }
-            case 3 : {
+            case 3: {
 
                 type = FigureType.O;
                 color = Color.YELLOW;
@@ -57,7 +57,7 @@ public class Figure {
                 break;
 
             }
-            case 4 : {
+            case 4: {
 
                 type = FigureType.S;
                 color = Color.GREEN;
@@ -65,7 +65,7 @@ public class Figure {
                 break;
 
             }
-            case 5 : {
+            case 5: {
 
                 type = FigureType.T;
                 color = Color.MAGENTA;
@@ -73,7 +73,7 @@ public class Figure {
                 break;
 
             }
-            case 6 : {
+            case 6: {
 
                 type = FigureType.Z;
                 color = Color.RED;
@@ -84,42 +84,21 @@ public class Figure {
         }
 
         switch (directionNumber) {
-            case 0 : direction = Direction.Up; break;
-            case 1 : direction = Direction.Right; break;
-            case 2 : direction = Direction.Down; break;
-            case 3 : direction = Direction.Left; break;
+            case 0:
+                direction = Direction.Up;
+                break;
+            case 1:
+                direction = Direction.Right;
+                break;
+            case 2:
+                direction = Direction.Down;
+                break;
+            case 3:
+                direction = Direction.Left;
+                break;
         }
 
 //        init();
-
-        for (Block b : figureParts) {
-            b.toMoving();
-            b.setBlock();
-        }
-
-    }
-
-    public Figure(FigureType type) {
-        this.type = type;
-
-        if (type == FigureType.I)
-            color = Color.CYAN;
-        else if (type == FigureType.J)
-            color = Color.BLUE;
-        else if (type == FigureType.L)
-            color = Color.ORANGE;
-        else if (type == FigureType.O)
-            color = Color.YELLOW;
-        else if (type == FigureType.S)
-            color = Color.GREEN;
-        else if (type == FigureType.Z)
-            color = Color.RED;
-        else if (type == FigureType.T)
-            color = Color.MAGENTA;
-
-        direction = Direction.Up;
-
-        init();
 
         for (Block b : figureParts) {
             b.toMoving();
@@ -140,10 +119,19 @@ public class Figure {
         return direction;
     }
 
-    public void init() {
+    public boolean init() {
 
         if (type == FigureType.I) {
             if (direction == Direction.Down || direction == Direction.Up) {
+
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 0).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 1).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 2).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 3).isEmpty())
+                    return false;
 
                 figureParts.add(new Block(Field.WIDTH / 2 - 1, 0, this));
                 figureParts.add(new Block(Field.WIDTH / 2 - 1, 1, this));
@@ -152,8 +140,17 @@ public class Figure {
 
                 direction = Direction.Up;
 
-            }
-            else {
+            } else {
+
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 2, 0).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 0).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2, 0).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 + 1, 0).isEmpty())
+                    return false;
+
 
                 figureParts.add(new Block(Field.WIDTH / 2 - 2, 0, this));
                 figureParts.add(new Block(Field.WIDTH / 2 - 1, 0, this));
@@ -162,60 +159,129 @@ public class Figure {
 
                 direction = Direction.Right;
 
+
             }
-        }
-        else if (type == FigureType.J) {
+        } else if (type == FigureType.J) {
             if (direction == Direction.Up) {
 
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 2).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2, 2).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2, 1).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2, 0).isEmpty())
+                    return false;
+
+
                 figureParts.add(new Block(Field.WIDTH / 2 - 1, 2, this));
                 figureParts.add(new Block(Field.WIDTH / 2, 2, this));
                 figureParts.add(new Block(Field.WIDTH / 2, 1, this));
                 figureParts.add(new Block(Field.WIDTH / 2, 0, this));
 
-            }
-            else if (direction == Direction.Right) {
+
+
+            } else if (direction == Direction.Right) {
+
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 2, 0).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 2, 1).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 1).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2, 1).isEmpty())
+                    return false;
 
                 figureParts.add(new Block(Field.WIDTH / 2 - 2, 0, this));
                 figureParts.add(new Block(Field.WIDTH / 2 - 2, 1, this));
                 figureParts.add(new Block(Field.WIDTH / 2 - 1, 1, this));
                 figureParts.add(new Block(Field.WIDTH / 2, 1, this));
 
-            }
-            else if (direction == Direction.Down) {
+
+
+            } else if (direction == Direction.Down) {
+
+                if (!Field.getInstance().get(Field.WIDTH / 2, 0).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 0).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 1).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 2).isEmpty())
+                    return false;
 
                 figureParts.add(new Block(Field.WIDTH / 2, 0, this));
                 figureParts.add(new Block(Field.WIDTH / 2 - 1, 0, this));
                 figureParts.add(new Block(Field.WIDTH / 2 - 1, 1, this));
                 figureParts.add(new Block(Field.WIDTH / 2 - 1, 2, this));
 
-            }
-            else if (direction == Direction.Left) {
+
+            } else if (direction == Direction.Left) {
+
+                if (!Field.getInstance().get(Field.WIDTH / 2, 1).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2, 0).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 0).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 2, 0).isEmpty())
+                    return false;
 
                 figureParts.add(new Block(Field.WIDTH / 2, 1, this));
                 figureParts.add(new Block(Field.WIDTH / 2, 0, this));
                 figureParts.add(new Block(Field.WIDTH / 2 - 1, 0, this));
                 figureParts.add(new Block(Field.WIDTH / 2 - 2, 0, this));
 
+
+
             }
-        }
-        else if (type == FigureType.L) {
+        } else if (type == FigureType.L) {
             if (direction == Direction.Up) {
 
+                if (!Field.getInstance().get(Field.WIDTH / 2, 2).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 2).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 1).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 0).isEmpty())
+                    return false;
+
                 figureParts.add(new Block(Field.WIDTH / 2, 2, this));
                 figureParts.add(new Block(Field.WIDTH / 2 - 1, 2, this));
                 figureParts.add(new Block(Field.WIDTH / 2 - 1, 1, this));
                 figureParts.add(new Block(Field.WIDTH / 2 - 1, 0, this));
 
-            }
-            else if (direction == Direction.Right) {
+
+
+            } else if (direction == Direction.Right) {
+
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 2, 1).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 2, 0).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 0).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2, 0).isEmpty())
+                    return false;
 
                 figureParts.add(new Block(Field.WIDTH / 2 - 2, 1, this));
                 figureParts.add(new Block(Field.WIDTH / 2 - 2, 0, this));
                 figureParts.add(new Block(Field.WIDTH / 2 - 1, 0, this));
                 figureParts.add(new Block(Field.WIDTH / 2, 0, this));
 
-            }
-            else if (direction == Direction.Down) {
+
+
+            } else if (direction == Direction.Down) {
+
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 0).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2, 0).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2, 1).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2, 2).isEmpty())
+                    return false;
 
                 figureParts.add(new Block(Field.WIDTH / 2 - 1, 0, this));
                 figureParts.add(new Block(Field.WIDTH / 2, 0, this));
@@ -223,51 +289,111 @@ public class Figure {
                 figureParts.add(new Block(Field.WIDTH / 2, 2, this));
 
 
-            }
-            else if (direction == Direction.Left) {
+
+
+            } else if (direction == Direction.Left) {
+
+                if (!Field.getInstance().get(Field.WIDTH / 2, 0).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2, 1).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 1).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 2, 1).isEmpty())
+                    return false;
 
                 figureParts.add(new Block(Field.WIDTH / 2, 0, this));
                 figureParts.add(new Block(Field.WIDTH / 2, 1, this));
                 figureParts.add(new Block(Field.WIDTH / 2 - 1, 1, this));
                 figureParts.add(new Block(Field.WIDTH / 2 - 2, 1, this));
 
+
+
             }
-        }
-        else if (type == FigureType.T) {
+        } else if (type == FigureType.T) {
             if (direction == Direction.Up) {
 
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 0).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 2, 1).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 1).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2, 1).isEmpty())
+                    return false;
+
                 figureParts.add(new Block(Field.WIDTH / 2 - 1, 0, this));
                 figureParts.add(new Block(Field.WIDTH / 2 - 2, 1, this));
                 figureParts.add(new Block(Field.WIDTH / 2 - 1, 1, this));
                 figureParts.add(new Block(Field.WIDTH / 2, 1, this));
 
-            }
-            else if (direction == Direction.Right) {
+
+
+            } else if (direction == Direction.Right) {
+
+                if (!Field.getInstance().get(Field.WIDTH / 2, 1).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 0).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 1).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 2).isEmpty())
+                    return false;
 
                 figureParts.add(new Block(Field.WIDTH / 2, 1, this));
                 figureParts.add(new Block(Field.WIDTH / 2 - 1, 0, this));
                 figureParts.add(new Block(Field.WIDTH / 2 - 1, 1, this));
                 figureParts.add(new Block(Field.WIDTH / 2 - 1, 2, this));
 
-            }
-            else if (direction == Direction.Down) {
+
+
+            } else if (direction == Direction.Down) {
+
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 1).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2, 0).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 0).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 2, 0).isEmpty())
+                    return false;
 
                 figureParts.add(new Block(Field.WIDTH / 2 - 1, 1, this));
                 figureParts.add(new Block(Field.WIDTH / 2, 0, this));
                 figureParts.add(new Block(Field.WIDTH / 2 - 1, 0, this));
                 figureParts.add(new Block(Field.WIDTH / 2 - 2, 0, this));
 
-            }
-            else if (direction == Direction.Left) {
+
+
+            } else if (direction == Direction.Left) {
+
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 1).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2, 0).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2, 1).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2, 2).isEmpty())
+                    return false;
 
                 figureParts.add(new Block(Field.WIDTH / 2 - 1, 1, this));
                 figureParts.add(new Block(Field.WIDTH / 2, 0, this));
                 figureParts.add(new Block(Field.WIDTH / 2, 1, this));
                 figureParts.add(new Block(Field.WIDTH / 2, 2, this));
 
+
+
             }
-        }
-        else if (type == FigureType.O) {
+        } else if (type == FigureType.O) {
+
+            if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 0).isEmpty())
+                return false;
+            if (!Field.getInstance().get(Field.WIDTH / 2, 0).isEmpty())
+                return false;
+            if (!Field.getInstance().get(Field.WIDTH / 2, 1).isEmpty())
+                return false;
+            if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 1).isEmpty())
+                return false;
 
             figureParts.add(new Block(Field.WIDTH / 2 - 1, 0, this));
             figureParts.add(new Block(Field.WIDTH / 2, 0, this));
@@ -276,9 +402,19 @@ public class Figure {
 
             direction = Direction.Up;
 
-        }
-        else if (type == FigureType.S) {
+
+
+        } else if (type == FigureType.S) {
             if (direction == Direction.Up || direction == Direction.Down) {
+
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 0).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 1).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2, 1).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2, 2).isEmpty())
+                    return false;
 
                 figureParts.add(new Block(Field.WIDTH / 2 - 1, 0, this));
                 figureParts.add(new Block(Field.WIDTH / 2 - 1, 1, this));
@@ -287,8 +423,18 @@ public class Figure {
 
                 direction = Direction.Up;
 
-            }
-            else {
+
+
+            } else {
+
+                if (!Field.getInstance().get(Field.WIDTH / 2, 0).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 0).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 1).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 2, 1).isEmpty())
+                    return false;
 
                 figureParts.add(new Block(Field.WIDTH / 2, 0, this));
                 figureParts.add(new Block(Field.WIDTH / 2 - 1, 0, this));
@@ -297,10 +443,20 @@ public class Figure {
 
                 direction = Direction.Right;
 
+
+
             }
-        }
-        else if (type == FigureType.Z) {
+        } else if (type == FigureType.Z) {
             if (direction == Direction.Up || direction == Direction.Down) {
+
+                if (!Field.getInstance().get(Field.WIDTH / 2, 0).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2, 1).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 1).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 2).isEmpty())
+                    return false;
 
                 figureParts.add(new Block(Field.WIDTH / 2, 0, this));
                 figureParts.add(new Block(Field.WIDTH / 2, 1, this));
@@ -309,8 +465,18 @@ public class Figure {
 
                 direction = Direction.Up;
 
-            }
-            else {
+
+
+            } else {
+
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 2, 0).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 0).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2 - 1, 1).isEmpty())
+                    return false;
+                if (!Field.getInstance().get(Field.WIDTH / 2, 1).isEmpty())
+                    return false;
 
                 figureParts.add(new Block(Field.WIDTH / 2 - 2, 0, this));
                 figureParts.add(new Block(Field.WIDTH / 2 - 1, 0, this));
@@ -319,8 +485,10 @@ public class Figure {
 
                 direction = Direction.Right;
 
+
             }
         }
+        return true;
     }
 
     public boolean moveDown() {
@@ -335,10 +503,8 @@ public class Figure {
             }
         }
 
-        Field.getInstance().refresh();
-
         for (Block b : figureParts) {
-                b.toLastSeen();
+            b.clear();
         }
 
         // moving
@@ -361,10 +527,8 @@ public class Figure {
                 return false;
         }
 
-        Field.getInstance().refresh();
-
         for (Block b : figureParts) {
-            b.toLastSeen();
+            b.clear();
         }
 
         for (Block b : figureParts) {
@@ -385,10 +549,8 @@ public class Figure {
                 return false;
         }
 
-        Field.getInstance().refresh();
-
         for (Block b : figureParts) {
-            b.toLastSeen();
+            b.clear();
         }
 
         for (Block b : figureParts) {
@@ -410,7 +572,7 @@ public class Figure {
                         && Field.getInstance().get(figureParts.get(2).getX() - 1, figureParts.get(2).getY() + 1).isEmpty()) {
 
                     for (Block b : figureParts) {
-                        b.toLastSeen();
+                        b.clear();
                     }
 
                     figureParts.get(0).setX(figureParts.get(0).getX() - 2);
@@ -431,14 +593,13 @@ public class Figure {
                     return true;
 
                 }
-            }
-            else if (direction == Direction.Right) {
+            } else if (direction == Direction.Right) {
                 if (Field.getInstance().get(figureParts.get(2).getX(), figureParts.get(2).getY() - 1).isEmpty()
                         && Field.getInstance().get(this.figureParts.get(2).getX() - 1, figureParts.get(2).getY() - 1).isEmpty()
                         && Field.getInstance().get(this.figureParts.get(2).getX(), figureParts.get(2).getY() + 1).isEmpty()) {
 
                     for (Block b : figureParts) {
-                        b.toLastSeen();
+                        b.clear();
                     }
 
                     figureParts.get(0).setY(figureParts.get(0).getY() - 2);
@@ -459,14 +620,13 @@ public class Figure {
                     return true;
 
                 }
-            }
-            else if (direction == Direction.Down) {
+            } else if (direction == Direction.Down) {
                 if (Field.getInstance().get(figureParts.get(2).getX() + 1, figureParts.get(2).getY() - 1).isEmpty()
                         && Field.getInstance().get(figureParts.get(2).getX() - 1, figureParts.get(2).getY() - 1).isEmpty()
                         && Field.getInstance().get(figureParts.get(2).getX(), figureParts.get(2).getY() + 1).isEmpty()) {
 
                     for (Block b : figureParts) {
-                        b.toLastSeen();
+                        b.clear();
                     }
 
                     figureParts.get(0).setX(figureParts.get(0).getX() + 2);
@@ -487,14 +647,13 @@ public class Figure {
                     return true;
 
                 }
-            }
-            else {
+            } else {
                 if (Field.getInstance().get(figureParts.get(2).getX(), figureParts.get(2).getY() - 1).isEmpty()
                         && Field.getInstance().get(figureParts.get(2).getX(), figureParts.get(2).getY() + 1).isEmpty()
                         && Field.getInstance().get(figureParts.get(2).getX() + 1, figureParts.get(2).getY() + 1).isEmpty()) {
 
                     for (Block b : figureParts) {
-                        b.toLastSeen();
+                        b.clear();
                     }
 
                     figureParts.get(0).setY(figureParts.get(0).getY() + 2);
@@ -516,15 +675,14 @@ public class Figure {
 
                 }
             }
-        }
-        else if (type == FigureType.J) {
+        } else if (type == FigureType.J) {
             if (direction == Direction.Up) {
                 if (Field.getInstance().get(figureParts.get(2).getX() + 1, figureParts.get(2).getY()).isEmpty()
                         && Field.getInstance().get(figureParts.get(2).getX() - 1, figureParts.get(2).getY()).isEmpty()
                         && Field.getInstance().get(figureParts.get(2).getX() - 1, figureParts.get(2).getY() - 1).isEmpty()) {
 
                     for (Block b : figureParts) {
-                        b.toLastSeen();
+                        b.clear();
                     }
 
                     figureParts.get(0).setY(figureParts.get(0).getY() - 2);
@@ -545,14 +703,13 @@ public class Figure {
                     return true;
 
                 }
-            }
-            else if (direction == Direction.Right) {
+            } else if (direction == Direction.Right) {
                 if (Field.getInstance().get(figureParts.get(2).getX(), figureParts.get(2).getY() - 1).isEmpty()
                         && Field.getInstance().get(this.figureParts.get(2).getX() + 1, figureParts.get(2).getY() - 1).isEmpty()
                         && Field.getInstance().get(this.figureParts.get(2).getX(), figureParts.get(2).getY() + 1).isEmpty()) {
 
                     for (Block b : figureParts) {
-                        b.toLastSeen();
+                        b.clear();
                     }
 
                     figureParts.get(0).setX(figureParts.get(0).getX() + 2);
@@ -573,14 +730,13 @@ public class Figure {
                     return true;
 
                 }
-            }
-            else if (direction == Direction.Down) {
+            } else if (direction == Direction.Down) {
                 if (Field.getInstance().get(figureParts.get(2).getX() + 1, figureParts.get(2).getY() - 1).isEmpty()
                         && Field.getInstance().get(figureParts.get(2).getX() - 1, figureParts.get(2).getY() - 1).isEmpty()
                         && Field.getInstance().get(figureParts.get(2).getX(), figureParts.get(2).getY() + 1).isEmpty()) {
 
                     for (Block b : figureParts) {
-                        b.toLastSeen();
+                        b.clear();
                     }
 
                     figureParts.get(0).setY(figureParts.get(0).getY() + 2);
@@ -601,14 +757,13 @@ public class Figure {
                     return true;
 
                 }
-            }
-            else {
+            } else {
                 if (Field.getInstance().get(figureParts.get(2).getX(), figureParts.get(2).getY() - 1).isEmpty()
                         && Field.getInstance().get(figureParts.get(2).getX(), figureParts.get(2).getY() + 1).isEmpty()
                         && Field.getInstance().get(figureParts.get(2).getX() + 1, figureParts.get(2).getY() + 1).isEmpty()) {
 
                     for (Block b : figureParts) {
-                        b.toLastSeen();
+                        b.clear();
                     }
 
                     figureParts.get(0).setX(figureParts.get(0).getX() - 2);
@@ -630,13 +785,12 @@ public class Figure {
 
                 }
             }
-        }
-        else if (type == FigureType.T) {
+        } else if (type == FigureType.T) {
             if (direction == Direction.Up) {
                 if (Field.getInstance().get(figureParts.get(2).getX(), figureParts.get(2).getY() + 1).isEmpty()) {
 
                     for (Block b : figureParts) {
-                        b.toLastSeen();
+                        b.clear();
                     }
 
                     figureParts.get(0).setX(figureParts.get(2).getX() + 1);
@@ -662,7 +816,7 @@ public class Figure {
                 if (Field.getInstance().get(figureParts.get(2).getX() - 1, figureParts.get(2).getY()).isEmpty()) {
 
                     for (Block b : figureParts) {
-                        b.toLastSeen();
+                        b.clear();
                     }
 
                     figureParts.get(0).setX(figureParts.get(2).getX());
@@ -688,7 +842,7 @@ public class Figure {
                 if (Field.getInstance().get(figureParts.get(2).getX(), figureParts.get(2).getY() - 1).isEmpty()) {
 
                     for (Block b : figureParts) {
-                        b.toLastSeen();
+                        b.clear();
                     }
 
                     figureParts.get(0).setX(figureParts.get(2).getX() - 1);
@@ -714,7 +868,7 @@ public class Figure {
                 if (Field.getInstance().get(figureParts.get(2).getX() + 1, figureParts.get(2).getY()).isEmpty()) {
 
                     for (Block b : figureParts) {
-                        b.toLastSeen();
+                        b.clear();
                     }
 
                     figureParts.get(0).setX(figureParts.get(2).getX());
@@ -737,15 +891,14 @@ public class Figure {
 
                 }
             }
-        }
-        else if (type == FigureType.I) {
+        } else if (type == FigureType.I) {
             if (direction == Direction.Up) {
                 if (Field.getInstance().get(figureParts.get(1).getX() - 1, figureParts.get(1).getY()).isEmpty()
                         && Field.getInstance().get(figureParts.get(1).getX() + 1, figureParts.get(1).getY()).isEmpty()
                         && Field.getInstance().get(figureParts.get(1).getX() + 2, figureParts.get(1).getY()).isEmpty()) {
 
                     for (Block b : figureParts) {
-                        b.toLastSeen();
+                        b.clear();
                     }
 
                     figureParts.get(0).setX(figureParts.get(1).getX() - 1);
@@ -773,7 +926,7 @@ public class Figure {
                         && Field.getInstance().get(figureParts.get(1).getX(), figureParts.get(1).getY() + 2).isEmpty()) {
 
                     for (Block b : figureParts) {
-                        b.toLastSeen();
+                        b.clear();
                     }
 
                     figureParts.get(0).setX(figureParts.get(1).getX());
@@ -796,15 +949,14 @@ public class Figure {
 
                 }
             }
-        }
-        else if (type == FigureType.S) {
+        } else if (type == FigureType.S) {
             if (direction == Direction.Up) {
                 if (Field.getInstance().get(figureParts.get(2).getX() - 1, figureParts.get(2).getY()).isEmpty()
                         && Field.getInstance().get(figureParts.get(2).getX(), figureParts.get(2).getY() - 1).isEmpty()
                         && Field.getInstance().get(figureParts.get(2).getX() + 1, figureParts.get(2).getY() - 1).isEmpty()) {
 
                     for (Block b : figureParts) {
-                        b.toLastSeen();
+                        b.clear();
                     }
 
                     figureParts.get(3).setX(figureParts.get(1).getX());
@@ -832,7 +984,7 @@ public class Figure {
                         && Field.getInstance().get(figureParts.get(2).getX() + 1, figureParts.get(2).getY() - 1).isEmpty()) {
 
                     for (Block b : figureParts) {
-                        b.toLastSeen();
+                        b.clear();
                     }
 
                     figureParts.get(1).setX(figureParts.get(3).getX());
@@ -855,15 +1007,14 @@ public class Figure {
 
                 }
             }
-        }
-        else if (type == FigureType.Z) {
+        } else if (type == FigureType.Z) {
             if (direction == Direction.Up) {
                 if (Field.getInstance().get(figureParts.get(2).getX() - 1, figureParts.get(2).getY() - 1).isEmpty()
                         && Field.getInstance().get(figureParts.get(2).getX(), figureParts.get(2).getY() - 1).isEmpty()
                         && Field.getInstance().get(figureParts.get(2).getX() + 1, figureParts.get(2).getY()).isEmpty()) {
 
                     for (Block b : figureParts) {
-                        b.toLastSeen();
+                        b.clear();
                     }
 
                     figureParts.get(3).setX(figureParts.get(1).getX());
@@ -891,7 +1042,7 @@ public class Figure {
                         && Field.getInstance().get(figureParts.get(2).getX(), figureParts.get(2).getY() + 1).isEmpty()) {
 
                     for (Block b : figureParts) {
-                        b.toLastSeen();
+                        b.clear();
                     }
 
                     figureParts.get(1).setX(figureParts.get(3).getX());

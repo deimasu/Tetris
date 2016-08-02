@@ -1,9 +1,8 @@
 package ru.xc0re.games.tetris.model;
 
+import org.jsfml.graphics.Color;
 import ru.xc0re.games.tetris.enums.Direction;
 import ru.xc0re.games.tetris.enums.SpaceType;
-
-import java.awt.*;
 
 public class Block {
 
@@ -79,10 +78,6 @@ public class Block {
 
     public Color getColor() {
         return figure.getColor();
-    }
-
-    public void toLastSeen() {
-        Field.getInstance().get(x, y).setType(SpaceType.MovingPartLastSeen);
     }
 
     public void toMoving() {

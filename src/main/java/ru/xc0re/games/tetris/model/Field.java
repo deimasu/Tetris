@@ -6,6 +6,7 @@ public class Field {
 
     public static int WIDTH = 10;
     public static int HEIGHT = 18;
+    public static int BUFFER_HEIGHT = 4;
 
     private Space[][] field;
 
@@ -33,15 +34,6 @@ public class Field {
 
     public Space get(int x, int y) {
         return field[y][x];
-    }
-
-    public void refresh() {
-        for (int i = 0; i < HEIGHT; i++) {
-            for (int j = 0; j < WIDTH; j++) {
-                if (field[i][j].getType() == SpaceType.MovingPartLastSeen)
-                field[i][j].setType(SpaceType.Empty);
-            }
-        }
     }
 
     public int checkLines() {
@@ -80,8 +72,7 @@ public class Field {
     private void emptyAll() {
         for (int i = 0; i < HEIGHT; i++) {
             for (int j = 0; j < WIDTH; j++) {
-                if (Field.getInstance().get(j, i).getType() == SpaceType.BrokenBlock
-                        || Field.getInstance().get(j, i).getType() == SpaceType.MovingPartLastSeen) {
+                if (Field.getInstance().get(j, i).getType() == SpaceType.BrokenBlock) {
                     Field.getInstance().get(j, i).setType(SpaceType.Empty);
                 }
             }
