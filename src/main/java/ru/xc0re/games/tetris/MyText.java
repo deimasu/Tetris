@@ -7,7 +7,6 @@ import java.io.IOException;
 public class MyText extends Text {
 
     private Font font;
-    private RectangleShape Background;
 
     public MyText(int size, String text, float x, float y, Color color) {
         font = new Font();

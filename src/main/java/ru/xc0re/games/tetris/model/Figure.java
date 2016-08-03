@@ -495,8 +495,6 @@ public class Figure {
         for (Block b : copyOfFigure) {
             if (b.getY() == Field.HEIGHT - 1 || Field.getInstance().get(b.getX(), b.getY() + 1) != null
                     && !Field.getInstance().get(b.getX(), b.getY() + 1).getFigure().equals(Field.getInstance().get(b.getX(), b.getY()).getFigure())) {
-                for (Block b1 : figureParts)
-                    b1.stop();
                 return true;
             }
         }
@@ -1053,10 +1051,6 @@ public class Figure {
                 }
             }
         }
-    }
-
-    public boolean isMoving() {
-        return moving;
     }
 
     public void setMoving(boolean moving) {

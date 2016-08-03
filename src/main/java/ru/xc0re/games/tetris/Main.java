@@ -11,6 +11,7 @@ import ru.xc0re.games.tetris.enums.FigureType;
 import ru.xc0re.games.tetris.model.Field;
 import ru.xc0re.games.tetris.model.Figure;
 
+import javax.swing.event.DocumentEvent;
 import java.io.IOException;
 
 import static org.jsfml.window.Keyboard.Key.*;
@@ -102,6 +103,9 @@ public class Main {
 
 
             for (Event event : window.pollEvents()) {
+                if (event.type == LOST_FOCUS) {
+                    paused = true;
+                }
                 if (event.type == CLOSED) {
                     window.close();
                 }

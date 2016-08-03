@@ -41,10 +41,6 @@ public class Block {
         Field.getInstance().set(x, y, null);
     }
 
-    public void stop() {
-        figure.setMoving(false);
-    }
-
     public void move(Direction direction) {
 
         Field.getInstance().set(x, y, null);
