@@ -103,7 +103,7 @@ public class Main {
 
 
             for (Event event : window.pollEvents()) {
-                if (event.type == LOST_FOCUS) {
+                if (event.type == LOST_FOCUS && !gameEnded && !restart) {
                     paused = true;
                 }
                 if (event.type == CLOSED) {
