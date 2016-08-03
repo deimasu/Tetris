@@ -14,11 +14,7 @@ import ru.xc0re.games.tetris.model.Figure;
 import java.io.IOException;
 
 import static org.jsfml.window.Keyboard.Key.*;
-import static org.jsfml.window.event.Event.Type.CLOSED;
-import static org.jsfml.window.event.Event.Type.KEY_PRESSED;
-import static org.jsfml.window.event.Event.Type.MOUSE_BUTTON_PRESSED;
-import static ru.xc0re.games.tetris.enums.SpaceType.MovingPart;
-import static ru.xc0re.games.tetris.enums.SpaceType.NotEmpty;
+import static org.jsfml.window.event.Event.Type.*;
 
 public class Main {
 
@@ -49,7 +45,7 @@ public class Main {
         MyText pauseText = new MyText(35, "PAUSED", WIDTH / 2 - 5 * GAME_UNIT_SIZE, HEIGHT / 2 - 3 * GAME_UNIT_SIZE, Color.BLACK);
         MyText restartText = new MyText(20, "RESTART", 13 * GAME_UNIT_SIZE, 15 * GAME_UNIT_SIZE, Color.WHITE);
         MyText restartQuestionText = new MyText(20, "Do you want to restart?", 2 * GAME_UNIT_SIZE, 10 * GAME_UNIT_SIZE, Color.WHITE);
-        MyText finalScoreText = new MyText(20, "Game over. Your score: ", 2 * GAME_UNIT_SIZE, 8 * GAME_UNIT_SIZE, Color.WHITE);
+        MyText finalScoreText = new MyText(20, "Game over. Your score: ", GAME_UNIT_SIZE, 8 * GAME_UNIT_SIZE, Color.WHITE);
         MyText yesText = new MyText(20, "YES", 4 * GAME_UNIT_SIZE, 13 * GAME_UNIT_SIZE, Color.WHITE);
         MyText noText = new MyText(20, "NO", 14 * GAME_UNIT_SIZE, 13 * GAME_UNIT_SIZE, Color.WHITE);
 
@@ -111,10 +107,7 @@ public class Main {
                 }
                 if (event.type == KEY_PRESSED && !restart && !gameEnded) {
                     if (event.asKeyEvent().key == UP && !paused) {
-                        try {
                             current.rotate();
-                        } catch (ArrayIndexOutOfBoundsException e) {
-                        }
                     }
                     if (event.asKeyEvent().key == DOWN && !paused) {
                         current.moveDown();
@@ -186,7 +179,8 @@ public class Main {
 
                 if (!paused) {
 
-                    if (timer == 20) {
+                    if (timer == 23) {
+
                         if (current.moveDown()) {
                             current = next;
                             if (!current.init()) {
@@ -222,8 +216,8 @@ public class Main {
 
                 for (int i = 0; i < Field.HEIGHT; i++) {
                     for (int j = 0; j < Field.WIDTH; j++) {
-                        if (Field.getInstance().get(j, i).getType() == MovingPart || Field.getInstance().get(j, i).getType() == NotEmpty) {
-                            sprite.setColor(Field.getInstance().get(j, i).getBlock().getColor());
+                        if (Field.getInstance().get(j, i) != null) {
+                            sprite.setColor(Field.getInstance().get(j, i).getColor());
                             sprite.setPosition(GAME_UNIT_SIZE * 2 + j * GAME_UNIT_SIZE, GAME_UNIT_SIZE * 2 + i * GAME_UNIT_SIZE);
                             window.draw(sprite);
                         }

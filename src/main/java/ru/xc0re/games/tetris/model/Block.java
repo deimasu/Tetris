@@ -2,7 +2,6 @@ package ru.xc0re.games.tetris.model;
 
 import org.jsfml.graphics.Color;
 import ru.xc0re.games.tetris.enums.Direction;
-import ru.xc0re.games.tetris.enums.SpaceType;
 
 public class Block {
 
@@ -18,8 +17,7 @@ public class Block {
         this.x = x;
         this.y = y;
 
-        Field.getInstance().get(x, y).setBlock(this);
-        Field.getInstance().get(x, y).setType(SpaceType.MovingPart);
+        Field.getInstance().set(x, y, this);
 
     }
 
@@ -40,29 +38,31 @@ public class Block {
     }
 
     public void clear() {
-        Field.getInstance().get(x, y).setType(SpaceType.Empty);
+        Field.getInstance().set(x, y, null);
     }
 
     public void stop() {
-        Field.getInstance().get(x, y).setType(SpaceType.NotEmpty);
+        figure.setMoving(false);
     }
 
     public void move(Direction direction) {
+
+        Field.getInstance().set(x, y, null);
+
         if (direction == Direction.Down) {
 
             if (y < Field.HEIGHT - 1)
                 y++;
 
-            Field.getInstance().get(x, y).setBlock(this);
-            Field.getInstance().get(x, y).setType(SpaceType.MovingPart);
+            setBlock();
+
         }
         else if (direction == Direction.Right) {
 
             if (x < Field.WIDTH - 1)
                 x++;
 
-            Field.getInstance().get(x, y).setBlock(this);
-            Field.getInstance().get(x, y).setType(SpaceType.MovingPart);
+            setBlock();
 
         }
         else if (direction == Direction.Left) {
@@ -70,8 +70,7 @@ public class Block {
             if (x > 0)
                 x--;
 
-            Field.getInstance().get(x, y).setBlock(this);
-            Field.getInstance().get(x, y).setType(SpaceType.MovingPart);
+            setBlock();
 
         }
     }
@@ -80,15 +79,11 @@ public class Block {
         return figure.getColor();
     }
 
-    public void toMoving() {
-        Field.getInstance().get(x, y).setType(SpaceType.MovingPart);
-    }
-
     public void setBlock() {
-        Field.getInstance().get(x, y).setBlock(this);
+        Field.getInstance().set(x, y, this);
     }
 
-    public boolean isMoving() {
-        return Field.getInstance().get(x, y).getType() == SpaceType.MovingPart;
+    public Figure getFigure() {
+        return figure;
     }
 }
